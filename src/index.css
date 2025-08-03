@@ -124,3 +124,13 @@ All colors MUST be HSL. Dark theme with #00C3FF accent.
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide vertical scrollbar across browsers */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}

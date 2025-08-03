@@ -11,7 +11,7 @@ const category = [
 ];
 
 const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
-  const [selected, setSelected] = useState("Sofa");
+  const [selected, setSelected] = useState("General");
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const inputRef = useRef(null);
@@ -104,13 +104,14 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
 
   // Scroll to section when category clicked
   const scrollToCategory = (cat) => {
-    if (!sectionRefs.current[cat] || !scrollContainerRef.current) return;
-    scrollContainerRef.current.scrollTo({
-      top:
-        sectionRefs.current[cat].offsetTop -
-        scrollContainerRef.current.offsetTop,
+    if (!sectionRefs.current[cat]) return;
+
+    sectionRefs.current[cat].scrollIntoView({
       behavior: "smooth",
+      block: "center",
+      inline: "nearest",
     });
+
     setSelected(cat);
   };
 
@@ -132,7 +133,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
   return (
     <div className="flex flex-col h-auto md:h-[500px]  rounded shadow-lg w-full max-w-full min-w-0">
       {/* Fixed top category & search bar */}
-      <div className="flex items-center gap-4  bg-white sticky top-0 z-10 p-4">
+      <div className="flex items-center gap-4  bg-white sticky top-0 z-10 py-4 ">
         {/* Search input with icon inside */}
         <div className="relative flex items-center flex-shrink-0">
           <button
@@ -149,7 +150,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
           <div
             className={`relative flex items-center transition-all duration-300 ease-in-out ${
               searchOpen
-                ? "w-64 opacity-100 ml-2"
+                ? "w-64 opacity-100 md:ml-2"
                 : "w-0 opacity-0 overflow-hidden"
             }`}
           >
@@ -210,7 +211,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
                 scrollbarWidth: "none", // Firefox
                 msOverflowStyle: "none", // IE & Edge
               }}
-              className="flex gap-2  overflow-x-auto whitespace-nowrap flex-1"
+              className="flex gap-2 overflow-x-auto whitespace-nowrap flex-1 hide-scrollbar"
             >
               {category.map((cat) => (
                 <button
@@ -291,6 +292,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
                 {servicesByCategory[cat].map((service, idx) => (
                   <div
                     key={idx}
+                    ref={scrollContainerRef}
                     className="rounded md:p-2 shadow-sm md:flex flex-col md:flex-row items-start md:items-center gap-4 mb-4 bg-white hidden"
                   >
                     <img
@@ -354,12 +356,13 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
                 {servicesByCategory[cat].map((service, idx) => (
                   <div
                     key={idx}
+                    ref={scrollContainerRef}
                     style={{
                       // Hide scrollbar styles
                       scrollbarWidth: "none", // Firefox
                       msOverflowStyle: "none", // IE & Edge
                     }}
-                    className="flex items-start gap-4 p-4 bg-white rounded shadow-sm md:hidden"
+                    className="flex items-start hide-scrollbar gap-4 p-4 bg-white rounded shadow-sm md:hidden"
                   >
                     <img
                       src={service.img}

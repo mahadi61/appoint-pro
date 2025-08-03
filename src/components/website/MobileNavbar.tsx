@@ -41,7 +41,7 @@ const MobileNavbar = () => {
             </Button>
 
             {isProfileOpen && (
-              <div className="absolute flex flex-col justify-between h-screen pb-24 right-0 top-full mt-2 w-96 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+              <div className="absolute flex flex-col justify-between h-screen pb-24 -right-4 top-full mt-2 w-screen bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
                 <div>
                   <div className="p-4">
                     <button
