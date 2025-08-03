@@ -2,13 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 const category = [
-  "Sofa",
-  "Mattress",
-  "Carpet",
-  "Curtain",
-  "Combos",
-  "Nano Coating",
-  "Pest Control",
+  "general",
+  "cockroaches",
+  "ants",
+  "bed bugs",
+  "rodents",
+  "mosquitoes",
 ];
 
 const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
@@ -31,6 +30,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
         const res = await fetch("/data.json");
         if (!res.ok) throw new Error("Failed to fetch services");
         const data = await res.json();
+        console.log("Fetched services:", data);
         return data;
       } catch (err) {
         console.error("Error fetching services:", err);
@@ -130,7 +130,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
   };
 
   return (
-    <div className="flex flex-col h-auto md:h-[500px] rounded shadow-lg w-full max-w-full min-w-0">
+    <div className="flex flex-col h-auto md:h-[500px]  rounded shadow-lg w-full max-w-full min-w-0">
       {/* Fixed top category & search bar */}
       <div className="flex items-center gap-4  bg-white sticky top-0 z-10 p-4">
         {/* Search input with icon inside */}
@@ -179,7 +179,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
 
         {/* Categories - horizontally scrollable with arrows */}
         {!searchOpen && (
-          <div className="flex items-center gap-2 w-full max-w-[400px]">
+          <div className="flex items-center gap-2 w-[85%] md:w-11/12">
             {/* Left Arrow */}
             <button
               aria-label="Scroll categories left"
@@ -216,7 +216,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
                 <button
                   key={cat}
                   onClick={() => scrollToCategory(cat)}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full transition-all duration-300 ease-in-out flex-shrink-0 ${
+                  className={`whitespace-nowrap px-4 py-2  capitalize rounded-full transition-all duration-300 ease-in-out flex-shrink-0 ${
                     selected === cat
                       ? "bg-[#00B9F2] text-white font-bold"
                       : "bg-white text-[#666666] font-bold"
@@ -260,7 +260,7 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
           scrollbarWidth: "none", // Firefox
           msOverflowStyle: "none", // IE & Edge
         }}
-        className="overflow-y-auto flex-1 p-1 md:p-4 space-y-6 bg-gray-50"
+        className="overflow-y-auto flex-1 mb-16 p-1 md:p-4 space-y-6 bg-gray-50"
       >
         {isLoading && <p>Loading services...</p>}
         {error && <p>Error loading services.</p>}
@@ -276,13 +276,15 @@ const StepOne = ({ handleAddItemsClick, handleRemoveItemClick, cartItems }) => {
           <div
             key={cat}
             ref={(el) => (sectionRefs.current[cat] = el)}
-            className="mb-8"
+            className="mb-8 "
           >
             {servicesByCategory[cat]?.length > 0 && (
               <>
-                <h3 className="text-2xl font-semibold mb-4 ml-3">{cat}</h3>
+                <h3 className="text-2xl  font-semibold capitalize mb-4 ml-3">
+                  {cat}
+                </h3>
                 <img
-                  src={"/1746538377sofa.webp"}
+                  src={"/cover.webp"}
                   className="w-full object-cover rounded"
                 />
                 {/* for desktop view */}

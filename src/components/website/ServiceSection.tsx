@@ -69,7 +69,7 @@ const ServiceSection: React.FC<Props> = ({ heading, services }) => {
             className=" min-w-[180px] bg-white overflow-hidden hover:cursor-pointer "
           >
             <Link
-              to={"/service"}
+              to={`/service/${heading}`}
               className="relative transition-transform hover:scale-105 "
             >
               {/* Image */}

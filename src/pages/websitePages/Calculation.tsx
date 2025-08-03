@@ -113,7 +113,7 @@ const Calculation: React.FC<CalculationProps> = ({
       </div>
 
       {/* Mobile bottom drawer */}
-      <div className="md:hidden">
+      <div className="md:hidden w-full">
         {/* Slide-Up Drawer */}
         <div
           className={`fixed bottom-12 left-0 right-0 bg-white transition-transform duration-300 transform max-h-[70vh] overflow-y-auto rounded-t-xl shadow-lg ${

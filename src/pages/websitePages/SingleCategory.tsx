@@ -61,7 +61,7 @@ const SingleCategory = () => {
       <div className="md:grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 hidden">
         {services.map((service, index) => (
           <Link
-            to={"/service"}
+            to={`/service/${category}`}
             key={index}
             className=" min-w-[180px] bg-white overflow-hidden hover:cursor-pointer "
           >
@@ -86,7 +86,7 @@ const SingleCategory = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:hidden">
         {services.map((service, index) => (
           <Link
-            to={"/service"}
+            to={`/service/${category}`}
             key={index}
             className="flex items-center gap-4 bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition"
           >

@@ -23,6 +23,7 @@ const StepThree = ({ onSelectionChange }) => {
   const [selectedProfessional, setSelectedProfessional] = useState(null);
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const [selectedDateOnly, setSelectedDateOnly] = useState(0);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("15:00-16:00");
   const [text, setText] = useState("");
@@ -80,7 +81,7 @@ const StepThree = ({ onSelectionChange }) => {
         scrollbarWidth: "none", // Firefox
         msOverflowStyle: "none", // IE & Edge
       }}
-      className="md:px-4 h-[600px] relative overflow-y-auto hide-vertical-scrollbar"
+      className="px-4 h-[600px] relative overflow-y-auto hide-vertical-scrollbar"
     >
       {/* profession section */}
       <section className="relative">
@@ -176,14 +177,17 @@ const StepThree = ({ onSelectionChange }) => {
             {dates.map((item, idx) => (
               <div
                 key={idx}
-                onClick={() => setSelectedDate(item.dateAndMonth)}
+                onClick={() => {
+                  setSelectedDate(item.dateAndMonth);
+                  setSelectedDateOnly(item.date);
+                }}
                 className="flex flex-col items-center cursor-pointer"
               >
                 <div className="text-sm text-gray-600 mb-1">{item.day}</div>
                 <div
                   className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm
                     ${
-                      selectedDate === item.date
+                      selectedDateOnly === item.date
                         ? "border-blue-500 text-blue-600 font-semibold"
                         : "border-gray-300 text-gray-600"
                     }`}
@@ -273,7 +277,7 @@ const StepThree = ({ onSelectionChange }) => {
             </button>
             {/* Modal */}
             {showModal && (
-              <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+              <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center md:items-center items-end z-50">
                 <div className="bg-white p-4 rounded-lg shadow-lg relative md:w-[470px]">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="font-bold text-lg">

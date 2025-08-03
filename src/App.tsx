@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound";
 import ProfileSettings from "./pages/ProfileSettings";
 import RoleManagement from "./pages/RoleManagement";
 import ServiceAreas from "./pages/ServiceAreas";
-import ServiceLayout from "./pages/ServiceLayout";
 import SystemSettings from "./pages/SystemSettings";
 import UserDashboard from "./pages/UserDashboard";
 import UserManagement from "./pages/UserManagement";
@@ -22,6 +21,7 @@ import FaqPage from "./pages/websitePages/FaqPage";
 import Home from "./pages/websitePages/Home";
 import MainLayout from "./pages/websitePages/MainLayout";
 import PrivacyPolicy from "./pages/websitePages/PrivacyPolicy";
+import ServiceLayout from "./pages/websitePages/ServiceLayout";
 import SingleCategory from "./pages/websitePages/SingleCategory";
 import Terms from "./pages/websitePages/Terms";
 
@@ -47,7 +47,10 @@ const App = () => (
             <Route path="terms" element={<Terms />} />
             <Route path="faq" element={<FaqPage />} />
           </Route>
-          <Route path="/service" element={<ServiceLayout></ServiceLayout>} />
+          <Route
+            path="/service/:category"
+            element={<ServiceLayout></ServiceLayout>}
+          />
 
           {/* Role-based Dashboard Routes */}
           <Route path="/admin" element={<AdminDashboard />} />

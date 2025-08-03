@@ -28,7 +28,7 @@ const CancellationPolicy = () => {
   ];
 
   return (
-    <section className="max-w-5xl mx-auto ">
+    <section className="max-w-5xl mx-auto">
       <div className="bg-white rounded-xl overflow-hidden">
         <div className="overflow-x-auto flex-wrap">
           <table className="min-w-full text-left text-sm">

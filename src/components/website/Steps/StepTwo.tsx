@@ -42,7 +42,7 @@ const StepTwo = ({
   if (error) return <p>Error loading popular services.</p>;
 
   return (
-    <div className="h-[500px]">
+    <div className="h-[500px] px-4 md:px-0">
       <h2 className="font-bold mb-4">People also added</h2>
 
       <div className="relative">

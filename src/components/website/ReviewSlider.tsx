@@ -89,8 +89,8 @@ const ReviewSlider: React.FC = () => {
           </CarouselContent>
 
           {/* Navigation Arrows (floating center vertically) */}
-          <CarouselPrevious className="absolute -left-24 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md w-10 h-10" />
-          <CarouselNext className="absolute -right-24 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md w-10 h-10" />
+          <CarouselPrevious className="absolute md:-left-24 md:top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md w-10 h-10 hidden md:block" />
+          <CarouselNext className="absolute md:-right-24 md:top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md w-10 h-10 hidden md:block" />
         </Carousel>
       </div>
     </section>

@@ -1,13 +1,15 @@
 import Footer from "@/components/website/Footer";
 import { Navbar } from "@/components/website/Navbar";
-import CheckoutService from "./websitePages/CheckoutService";
+import { useParams } from "react-router-dom";
+import CheckoutService from "./CheckoutService";
 
 const ServiceLayout = () => {
+  const { category } = useParams();
   return (
     <div>
       <Navbar></Navbar>
 
-      <CheckoutService />
+      <CheckoutService category={category} />
       <div className="hidden md:block">
         <Footer></Footer>
       </div>
